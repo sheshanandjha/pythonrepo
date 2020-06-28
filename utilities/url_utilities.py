@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 def load_urls_from_file(file_path: str):
     try:
         with open(file_path) as f:
-            content = f.readline()
+            content = f.readlines()
             return content
     except FileNotFoundError:
         print("the file " + file_path + " could not be found")
@@ -23,7 +23,7 @@ def load_page(url: str):
 
 def scrape_page(page_contents: str):
     chicken_noodle = BeautifulSoup(page_contents, "html5lib")
-    for script in BeautifulSoup(["script", "style"]):
+    for script in chicken_noodle(["script", "style"]):
         script.extract()
 
     text = chicken_noodle.get_text()
