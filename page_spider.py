@@ -1,5 +1,5 @@
-import os
 import argparse
+
 from utilities import url_utilities
 
 
